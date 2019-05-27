@@ -8,6 +8,11 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - './mysql.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf'
+    environment:
+       - MYSQL_ROOT_PASSWORD=devpassword
+       - MYSQL_DATABASE=flaskdb
+       - MYSQL_USER=jayden
+       - MYSQL_PASSWORD=devpassword
 
 
   website:
@@ -18,7 +23,7 @@ services:
         --reload
         "project.app:create_app()"
     environment:
-      PYTHONUNBUFFERED: 'true'
+       PYTHONUNBUFFERED: 'true'
     volumes:
       - '.:/project'
     ports:
@@ -42,6 +47,6 @@ services:
     volumes:
       - '.:/project'
 
-      
+
 volumes:
    redis:
