@@ -1,6 +1,6 @@
 DEBUG = True
 SECRET_KEY = 'fahdkjgh6*%$$%((%$j))'
-
+SERVER_NAME ='localhost:5000'
 
 # SQLAlchemy.
 db_uri = 'mysql+mysqldb://root:devpassword@mysql:3306/flaskdb'

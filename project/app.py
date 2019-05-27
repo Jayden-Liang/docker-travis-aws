@@ -6,9 +6,11 @@ from project.blueprints.user.models import db, User
 from project.blueprints.blog.views import blog
 import os
 
-def create_app():
+def create_app(settings_override=None):
     app = Flask(__name__)
     app.config.from_object('config.settings')
+    if settings_override is not None:
+        app.config.update(settings_override)
     extent(app)
     register_blueprint(app)
     return app
