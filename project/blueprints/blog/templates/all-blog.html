@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% for x in all %}
+<p>{{ x.id }}:{{ x.title}}</p>
+<p>{{ x.content }}     </p>
+<p>{{ x.user.username }}</p>
+<hr>
+{% endfor %}
+{% endblock %}

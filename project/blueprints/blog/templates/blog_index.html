@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% for x in blogs %}
+<p>{{ x.id }}:{{ x.title}}</p>
+<p>{{ x.content }}     </p>
+<p>{{ x.user.username }}                   <a href="{{url_for('blog.detail', title=x.title ) }}">Read More</a> </p>
+<hr>
+{% endfor %}
+{% endblock %}

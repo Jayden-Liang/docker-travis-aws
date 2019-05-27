@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% for x in all %}
+<p>{{ x.id }}:{{ x.username}}</p>
+<p>{{ x.email }}       {{ x.role.name }}</p>
+<hr>
+{% endfor %}
+{% endblock %}
