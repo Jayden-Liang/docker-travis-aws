@@ -6,6 +6,26 @@ from project.blueprints.user.models import db, User
 from project.blueprints.blog.views import blog
 import os
 
+from celery import Celery
+CELERY_TASK_LIST =[
+    'project.blueprints.user.celery_task'
+]
+
+
+def create_celery_app(app=None):
+    app = app or create_app()
+    celery = Celery(app.import_name, broker=app.config['CELERY_BROKER_URL'],
+    include=CELERY_TASK_LIST)
+    celery.conf.update(app.config)
+    TaskBase = celery.Task
+    class ContextTask(TaskBase):                #以下是为每个task设置context，如果要access数据库，就要设置context
+        abstract = True
+        def __call__(self, *args, **kwargs):
+            with app.app_context():
+                return TaskBase.__call__(self, *args, **kwargs)
+    celery.Task = ContextTask
+    return celery
+
 def create_app(settings_override=None):
     app = Flask(__name__)
     app.config.from_object('config.settings')

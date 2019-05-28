@@ -1,0 +1,10 @@
+Hello {{ name }},
+
+You are in the process of activating your account, please click the following link to proceed.
+
+{{ url_for('users.activate', token = token, _external =True) }}
+
+Warning, if you are not aware, please ignore this email! Thank you!
+
+Best regards!
+Jayden

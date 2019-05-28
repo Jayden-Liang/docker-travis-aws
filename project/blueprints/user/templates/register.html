@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% import 'form.html' as f with context %}
+
+{% block title %}Register Page{% endblock %}
+
+{% block body %}
+
+   <div class="row">
+     <div class="col-md-8 offset-md-2 well">
+      {% call f.form_tag('users.register') %}
+
+        {% call f.form_group(form.email, css_class='margin-bottom',
+                             placeholder='Please enter E-mail') %}
+        {% endcall %}
+
+        {% call f.form_group(form.username, css_class='margin-bottom',
+                             placeholder='Please enter Username') %}
+        {% endcall %}
+
+        {% call f.form_group(form.password, css_class='margin-bottom',
+                             placeholder='Please enter the password'
+                             ) %}
+        {% endcall %}
+        {% call f.form_group(form.confirm_password, css_class='margin-bottom',
+                             placeholder='Please repeat the password'
+                             ) %}
+        {% endcall %}
+         <div class="row">
+           <div class="col col-md-2">
+             <button type="submit" class="btn btn-primary">Register</button>
+           </div>
+           <div class="col col-md-2 offset-md-8">
+             <a type="button"  class="btn btn-secondary" href="{{ url_for('auth.auth_login', provider='github') }}"><i class="fab fa-github"></i> Login</a>
+           </div>
+         </div>
+
+      {% endcall %}
+    </div>
+   </div>
+
+{% endblock %}
