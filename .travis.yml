@@ -1,24 +1,10 @@
-sudo: required
-services:
-  - docker
-
-before_install:
-  - docker-compose up -d
-
-script:
-  - docker-compose exec website py.test project/test
-
-before_deploy: "echo 'ready?'"
 deploy:
   provider: elasticbeanstalk
-  region: 'us-east-2'
-  app: "docker-travis-aws"
-  env: "DockerTravisAws-env"
-  bucket_name: "elasticbeanstalk-us-east-2-932745336105"
-  bucket_path: "docker-travis-aws"
-  on:
-    branch: master
-  access_key_id:
-    secure: "rXYCaLTrlze0TyMVzDyxkKHS7WscWVrLleyXoAMXm6cGVl+09AFtFAnV3Cwkms+CeIdgxgWecrNbOU1PwWZnGETsk9nod7U8Jf+KH0UQDcgCfugt/UgslVgA1aalRlHLBWzJAzvPOfwFG0haE2CDX3DqUJZpZfe1WkWw9L67uoFzCKt989CIa8v18R9wEBwuHS8S2YqMtjxSvemO1mL6PYoZbzEHkyuwALe/4c7d19+ezq7q9amki8+5s0S8iBPl/swcnwJpXNj/OQZxZvTxPwI7HmGXHWSUEAvF9tMYBTwdOrgIc7NDBZBeIaLsSUjbbKjZahbBb014SUADLDQMdvLxk3YBWHkPHFQ8ieDuaadzmqq3aA6IEp6uof15aXBZmJKps+Gf3tl7FnpFp3mRtlpQNd41YWq7d39Zy6xijwWdHZpmMlGLVqeW5zjna11oT5hKlo4jzB+AkNhHk0KvxwBj+e2LXPlLtVCIl7IuJpOvJvkkvjEF+2WNayhbYf2HsQ+Cld1D+9KqRysGX0bmIIwcq1//Mtvmfhq6zJmS2SVuEmUoaxt7/ERJn3UO4shadZnlrqOAUTgun1yJzATBWBgVq4vE0brXtQcuC8PaPVoi5sSkdyOVFCGqS5gd6RNUfIA3QIHQVW5J7QFqvi+jCxS42KPdZ2wo75CkrseMOzI="
+  access_key_id: AKIA5SK7UKUUW3QN57LJ
   secret_access_key:
-    secure: "a7B01/+wx7Y0MeBKkvN9K+M/DdwR06Ynl/Qb25o7w58MoZCN8VLDn4nm+uttTvXi6AhNuUGBAQMp11Lz0kqcKEBmvG+BduEizGvoFAcJajRO1/+MmwbH0kesNR63S1clmLRQBnFSoGCAHmomnsVL9AT14CcWaFmKUnlBOXpcVb00A5+3R5R8NPwPgh7euadS+z1+yyEOM8GI5R2X5FadOwBdazeXN8RvPUm995iUCb5BWwhFIzITYgL2+CHEEuVl858fpJa77EPBKzG98ymaKri5eHv4y/xdnUsdHqS/+4uMpv1DWio0ulsMmLEm2iREnTAZCTroQp0KsjvY1UEzhG4/zCJF7TT7vvx+cFU3aFmMRTbQp9jQHWwlMYYwqem3WU/huL3Kjvlkj1mafu5pQpu83h3rRu76J1OxeqcXbwywEzx3dhWnrFMqc23qs0TtKOS9djGrWV9WFaOITK0XFwhLj6QS5P3QNSM9Dw0/wFEHF+Kbc9QnLHbT07pbUjsA0UEPRBTZ0T5xPhOEKDCYUA6jCa3SX1wsQW2oT9ttCTT04asIoe5OkOnJXDqawPGsnIsanrVZfRe5BJBZhB416to5P9k/362KRvs1ZeiCm0qeOo0gadQONO4oMuLcKmBgOqyaZGyVO0VWyYyAxmDJO+FyQHOl5BCFipM3CHTRh8M="
+    secure: tQXEMCCTw+81UDW+8lsNdmrUtP4PCpCYURTz/eKoPg/H+0AWqkO3PpsMImSssy+emAaO5jVeiuKKicY/1EHntnxdtucpinT3O4NvoQ3BnDlrvT8ADl97ySTRhXyO2sYdNcrAn5F2KbIo017ccXmOSJiLN65vu2dYlvXDPzfR974t4KOrgNgDymw6CRI2lzUdZX/oH/DHdvDEELtpllneRfz9ypVHoZ/ELEYIZ0dv0vM/hkSURmfgXE9u6oXbW00ufZneBbkgugLASb/97nZGRfGPIuFj4QABBEGSqpVdDDIAPtACKvvdnRug2mxAq2S0Z6u3laxoa6wtb3nS7F80wMi6gb1VF5L62mqltahgG4q38dkrqq8+b3jVY0dTDfZbGLphHghcHLCf6EyNiwnYpSBLMGktaqSGWCDPd6ePB0AUAI50k6djh1mSVysaeV8B3KPoMnKw3zdkzqEMMlcYflbIrEkRNNSU+1jclWjwyWzfK1OZfIf7r0S4HKK0NR7WJBrMNcn+ACwW+YqFTpyxexN+yyN4DlYPsqIlTHu8jQAOKpbZmfJXh+TCF7qfGBh+hjMzsBOq4RhSV7vbCpKZi7ssTxDvG6oVllHW4X9HrBkPV1TcQNz1a6/87zxiypMXCO8qnB5sYOfnALaD9kyyww2M9AbjgA/f2JEy/Wtvv+A=
+  region: "us-east-2"
+  app: docker-travis-aws
+  env: DockerTravisAws-env
+  on:
+    repo: Jayden-Liang/docker-travis-aws
