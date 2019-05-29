@@ -19,3 +19,4 @@ python-dotenv
 flask-moment
 Faker
 flask-oauthlib==0.9.5
+flask-mail

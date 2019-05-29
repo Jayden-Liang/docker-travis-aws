@@ -40,8 +40,8 @@ def register():
         )
         u.save()
         token= serializer(form.email.data)
-        from project.blueprints.user.celery_task import sendgrid_email
-        sendgrid_email.delay('no-reply@service.com',form.email.data, name = form.username.data, token=token)
+        from project.blueprints.user.celery_task import send_email
+        send_email.delay('Registration activation email',form.email.data, name = form.username.data, token=token)
         #flash
         return redirect(url_for('users.register'))
     return render_template('register.html', form = form)

@@ -28,3 +28,11 @@ CELERY_REDIS_MAX_CONNECTIONS = 10     #防止redis因连接过多挂掉， 这�
 
 #sendgrid
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+
+#flask-mail
+MAIL_SERVER = 'smtp.qq.com'
+MAIL_PORT = 587
+MAIL_USE_TLS = True
+MAIL_USERNAME = os.getenv('MAIL_USERNAME')      #邮箱地址
+MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')      #授权码
+MAIL_DEFAULT_SENDER = ('Jayden-Liang', os.getenv('MAIL_USERNAME'))

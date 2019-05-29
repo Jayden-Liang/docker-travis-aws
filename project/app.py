@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request, Blueprint, current_app
-from project.extensions import oauth, csrf, login_manager
+from project.extensions import oauth, csrf, login_manager, mail
 from project.blueprints.auth.views import auth
 from project.blueprints.user.views import users
 from project.blueprints.user.models import db, User
@@ -33,13 +33,20 @@ def create_app(settings_override=None):
         app.config.update(settings_override)
     extent(app)
     register_blueprint(app)
+
     return app
 
 def extent(app):
     oauth.init_app(app)
     csrf.init_app(app)
     db.init_app(app)
+    db.app = app
+    try:
+        db.create_all()
+    except:
+        print('already exist')    
     login_manager.init_app(app)
+    mail.init_app(app)
     return None
 
 def register_blueprint(app):
