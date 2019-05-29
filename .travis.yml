@@ -16,5 +16,7 @@ deploy:
   region: "us-east-2"
   app: docker-travis-aws
   env: DockerTravisAws-env
+  bucket_name: "elasticbeanstalk-us-east-2-932745336105"
+  bucket_path: "docker-travis-aws"
   on:
     repo: Jayden-Liang/docker-travis-aws
