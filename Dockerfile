@@ -12,7 +12,7 @@ COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
 COPY ./ ./
-
+EXPOSE 80
 RUN pip3 install --editable .
 
 CMD gunicorn -b 0.0.0.0:5000 --access-logfile - "project.app:create_app()"
