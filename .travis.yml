@@ -1,3 +1,4 @@
+sudo: required
 services:
   - docker
 
@@ -7,6 +8,7 @@ before_install:
 script:
   - docker-compose exec website py.test project/test
 
+before_deploy: "echo 'ready?'"
 deploy:
   provider: elasticbeanstalk
   region: 'us-east-2'
@@ -18,4 +20,4 @@ deploy:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
-    secure: $AWS_SECRET_KEY
+    secure: "$AWS_SECRET_KEY"
